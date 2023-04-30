@@ -185,7 +185,7 @@ def read_pdf(filename):
                         break   
             # if found_name is False and found_secondary_name is False:
             if found_secondary_name is False:
-                pattern_ignore = r'portfolio|professionale|email|e-mail|curriculum|vitae|informazioni|personali|formazione|academica|formato|europeo|operaia|europass|presentazione|nazionalita|italiana|indirizzo|occupazione'
+                pattern_ignore = r'portfolio|professionale|email|e-mail|curriculum|vitae|informazioni|personali|formazione|academica|formato|europeo|operaia|europass|presentazione|nazionalita|italiana|indirizzo|occupazione|allegato|contatti|esperienze|competenze|formazioni|esperienza|dichiarazione|mio|nome|transazione|azienda|via|buongiorno|assistente|profilo|istruzione|città|operatore|studentessa|residente|responsabile|cv|finito|ecco|cognome|receptionist|coordinatore|coordinatrice|tel|foto|euro'
                 if not re.search(pattern_ignore, text.lower()) and not text.isspace():
                     secondary_name = re.sub(r'(?<!\S)[^a-zA-Z\s]|(?<=\s)\S(?=\s)|(?<=\s)\S$', '', text)
                     found_secondary_name=True
@@ -207,9 +207,6 @@ def read_pdf(filename):
             first_name=words[0]
             if size>1:
                 last_name=words[1]
-        # data=[first_name, last_name, email]
-        # print([filename,first_name, last_name, email])
-        # print()
         # Write the data to the CSV file
         if os.path.isfile(csv_file_path):
             # File already exists, so append data to it
